@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tb_bmns', function (Blueprint $table) {
-            $table->string('jenis_kendaraan',3);
+        Schema::create('tb_kodefbmns', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('satuan',10);
+            $table->string('ur_sskel',65);
+            $table->string('kd_perk',6);
+            $table->string('kd_brg',10);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tb_bmns', function (Blueprint $table) {
-            $table->dropColumn('jenis_kendaraan');
-        });
+        Schema::dropIfExists('tb_kodefbmns');
     }
 };
